@@ -1,0 +1,373 @@
+---
+import Base from '../layouts/Base.astro';
+
+const experience = [
+	{
+		role: 'Member of Technical Staff 2',
+		company: 'Cohesity',
+		location: 'Bangalore, India',
+		period: 'Dec 2024 – Present',
+		bullets: [
+			'Led design & development of a cluster-wide GFlags intelligence platform (Python + AWS SSM) replacing manual SSH-based audits, layering Azure-hosted AI agents and n8n workflows to catch config drift daily — cut high disk-space alerts by 90%.',
+			'Architected an OpsConsole-native scaling capability (FastAPI, MongoDB, Temporal, Angular) for approval-gated EC2 resizing with full audit trail, retry policies, and blast-radius isolation, replacing ad-hoc AWS Console changes.',
+			'Built an n8n-based disk-space triage agent that automates Jira, Prometheus, and cluster diagnostics to recommend cleanup, GFlag tuning, or escalation — removing manual investigation for on-call engineers.',
+			'Shipped Fleet Operations on OpsConsole: durable Temporal workflows, fleet-wide AWS SSM execution, and a TypeScript/Angular run-status UI with live progress and history.',
+			'On-call engineer for CCS clusters — mitigated high-severity alerts, performed live scaling and patching, and drove proactive fixes from alert-pattern analysis.',
+			'Reduced cross-AZ traffic costs in Helios EKS clusters via VPC flow-log analysis and topology-aware routing proposals.',
+		],
+	},
+	{
+		role: 'Software Engineer',
+		company: 'Netradyne Inc',
+		location: 'Bangalore, India',
+		period: 'Aug 2021 – Nov 2024',
+		bullets: [
+			'Led the Stitch/Multi-View video feature from scratch — stitching annotated 9-camera-angle video from the IDMS SaaS portal (Java Spring, J2EE, Python, FFmpeg, PostgreSQL, Docker, Jenkins, AWS SQS/EC2) — driving 10x more sales than competitors.',
+			'Subject Matter Expert for video data-loss and latency issues for Amazon NA/UK — redesigned ingestion workflows, preventing 700+ lost alert videos/day and raising availability from 91% to 99%.',
+			'Engineered custom VTT subtitle generation across video players, reaching 100% annotated video coverage.',
+			'Led migration of IDMS services to Amazon EKS — set up clusters, node groups, and YAML-based declarative deployments.',
+		],
+	},
+];
+
+const projects = [
+	{
+		name: 'ER Shift-Handoff Copilot',
+		description:
+			'A multi-agent system that turns doctor shift notes and patient history into structured SBAR handoffs, flags critical issues, and supports safe follow-up Q&A.',
+		link: 'https://github.com/tejasghswe/pr1',
+		linkLabel: 'github.com/tejasghswe/pr1',
+	},
+];
+
+const publications = [
+	{
+		title: 'Dermoscopic Classification using Image Processing and CNN',
+		description:
+			'Automated melanoma detection model using SE-ResNeXt (a ResNet variant with squeeze-and-excitation blocks), achieving 90% accuracy on the ISIC 2020 Challenge Dataset.',
+	},
+	{
+		title: 'VPN Detection and Blocking',
+		description:
+			'Designed a VPN detector to reduce vulnerability of small-scale vendor websites to unethical activity by detecting VPN connections and blocking access. (Python, Django, IPQualityScore)',
+	},
+];
+
+const skills = {
+	Backend: ['Python', 'Java', 'C++', 'C', 'C#', 'Go', 'Node.js', 'Linux/Unix'],
+	Frontend: ['JavaScript', 'React.js', 'Angular', 'TypeScript'],
+	'DevOps & Cloud': ['Docker', 'Kubernetes', 'AWS (SSM, SQS, EC2, EKS, IAM/STS)', 'Azure', 'Jenkins', 'Ansible', 'Temporal', 'n8n', 'OpenTelemetry', 'Prometheus', 'Datadog'],
+	Databases: ['MySQL', 'MongoDB', 'PostgreSQL'],
+	'Frameworks & APIs': ['FastAPI', 'Spring Boot', 'J2EE', 'REST APIs'],
+};
+
+const email = 'tejasghswe@gmail.com';
+const github = 'https://github.com/tejasghswe';
+---
+
+<Base
+	title="Tejas Ghatikar — Software Engineer"
+	description="Software Engineer with 5+ years of experience building cloud-scale distributed systems and AI-powered automation."
+>
+	<header class="topbar">
+		<a class="brand" href="#top">TG</a>
+		<nav>
+			<a href="#experience">Experience</a>
+			<a href="#projects">Projects</a>
+			<a href="#publications">Publications</a>
+			<a href="#contact">Contact</a>
+			<a href="/Tejas_Ghatikar_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+		</nav>
+	</header>
+
+	<main>
+		<section id="top" class="hero">
+			<p class="eyebrow">Hey, I'm Tej 👋</p>
+			<h1>Tejas Ghatikar</h1>
+			<p class="tagline">
+				Software Engineer with 5+ years of experience building cloud-scale distributed systems
+				and AI-powered automation, currently supporting 300+ production clusters at Cohesity.
+			</p>
+			<div class="quick-links">
+				<a href={`mailto:${email}`}>{email}</a>
+				<span class="dot">·</span>
+				<a href={github} target="_blank" rel="noopener">GitHub</a>
+				<span class="dot">·</span>
+				<span class="muted">Bangalore, India</span>
+			</div>
+		</section>
+
+		<section id="experience">
+			<h2>Experience</h2>
+			{experience.map((job) => (
+				<article class="job">
+					<div class="job-head">
+						<h3>{job.role} · {job.company}</h3>
+						<p class="period">{job.period}</p>
+					</div>
+					<p class="location">{job.location}</p>
+					<ul>
+						{job.bullets.map((b) => <li>{b}</li>)}
+					</ul>
+				</article>
+			))}
+		</section>
+
+		<section id="projects">
+			<h2>Projects</h2>
+			{projects.map((p) => (
+				<article class="card">
+					<h3>{p.name}</h3>
+					<p>{p.description}</p>
+					<a href={p.link} target="_blank" rel="noopener">{p.linkLabel} ↗</a>
+				</article>
+			))}
+		</section>
+
+		<section id="publications">
+			<h2>Publications</h2>
+			{publications.map((pub) => (
+				<article class="card">
+					<h3>{pub.title}</h3>
+					<p>{pub.description}</p>
+				</article>
+			))}
+		</section>
+
+		<section id="skills">
+			<h2>Skills</h2>
+			<dl class="skills">
+				{Object.entries(skills).map(([category, items]) => (
+					<div class="skill-row">
+						<dt>{category}</dt>
+						<dd>{items.join(', ')}</dd>
+					</div>
+				))}
+			</dl>
+		</section>
+
+		<section id="contact" class="contact">
+			<h2>Contact</h2>
+			<p>Open to interesting conversations about distributed systems, AI agents, and infra.</p>
+			<div class="quick-links">
+				<a href={`mailto:${email}`}>{email}</a>
+				<span class="dot">·</span>
+				<a href={github} target="_blank" rel="noopener">GitHub</a>
+				<span class="dot">·</span>
+				<a href="/Tejas_Ghatikar_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<p>© {new Date().getFullYear()} Tejas Ghatikar</p>
+	</footer>
+</Base>
+
+<style>
+	.topbar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 760px;
+		margin: 0 auto;
+		padding: 1.5rem 1.5rem 0;
+	}
+
+	.brand {
+		font-weight: 700;
+		color: var(--fg);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		padding: 0.15rem 0.5rem;
+	}
+
+	.brand:hover {
+		text-decoration: none;
+		border-color: var(--accent);
+	}
+
+	nav {
+		display: flex;
+		gap: 1.25rem;
+		flex-wrap: wrap;
+	}
+
+	nav a {
+		color: var(--fg-dim);
+		font-size: 0.9rem;
+	}
+
+	nav a:hover {
+		color: var(--accent);
+	}
+
+	main {
+		max-width: 760px;
+		margin: 0 auto;
+		padding: 0 1.5rem 4rem;
+	}
+
+	.hero {
+		padding: 4rem 0 3rem;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.eyebrow {
+		color: var(--accent);
+		margin: 0 0 0.5rem;
+		font-size: 0.95rem;
+	}
+
+	h1 {
+		font-size: 2.25rem;
+		margin: 0 0 1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.tagline {
+		color: var(--fg-dim);
+		max-width: 56ch;
+		font-size: 1.05rem;
+	}
+
+	.quick-links {
+		margin-top: 1.5rem;
+		color: var(--fg-dim);
+		font-size: 0.95rem;
+	}
+
+	.quick-links .dot {
+		margin: 0 0.6rem;
+		color: var(--border);
+	}
+
+	.muted {
+		color: var(--fg-dim);
+	}
+
+	section {
+		padding: 3rem 0;
+		border-bottom: 1px solid var(--border);
+	}
+
+	section:last-of-type {
+		border-bottom: none;
+	}
+
+	h2 {
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--fg-dim);
+		margin: 0 0 1.75rem;
+	}
+
+	.job {
+		margin-bottom: 2.25rem;
+	}
+
+	.job:last-child {
+		margin-bottom: 0;
+	}
+
+	.job-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.job-head h3 {
+		margin: 0;
+		font-size: 1.05rem;
+	}
+
+	.period {
+		margin: 0;
+		color: var(--fg-dim);
+		font-size: 0.85rem;
+		white-space: nowrap;
+	}
+
+	.location {
+		margin: 0.15rem 0 0.75rem;
+		color: var(--fg-dim);
+		font-size: 0.85rem;
+	}
+
+	.job ul {
+		margin: 0;
+		padding-left: 1.1rem;
+	}
+
+	.job li {
+		margin-bottom: 0.6rem;
+		color: var(--fg);
+	}
+
+	.card {
+		background: var(--bg-raised);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		padding: 1.25rem 1.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.card:last-child {
+		margin-bottom: 0;
+	}
+
+	.card h3 {
+		margin: 0 0 0.5rem;
+		font-size: 1rem;
+	}
+
+	.card p {
+		margin: 0 0 0.75rem;
+		color: var(--fg-dim);
+	}
+
+	.skills {
+		margin: 0;
+		display: grid;
+		gap: 0.9rem;
+	}
+
+	.skill-row {
+		display: grid;
+		grid-template-columns: 160px 1fr;
+		gap: 1rem;
+	}
+
+	.skill-row dt {
+		color: var(--accent);
+		font-size: 0.85rem;
+	}
+
+	.skill-row dd {
+		margin: 0;
+		color: var(--fg-dim);
+		font-size: 0.9rem;
+	}
+
+	.contact p {
+		color: var(--fg-dim);
+	}
+
+	footer {
+		max-width: 760px;
+		margin: 0 auto;
+		padding: 0 1.5rem 3rem;
+		color: var(--fg-dim);
+		font-size: 0.85rem;
+	}
+
+	@media (max-width: 560px) {
+		.skill-row {
+			grid-template-columns: 1fr;
+			gap: 0.25rem;
+		}
+	}
+</style>
