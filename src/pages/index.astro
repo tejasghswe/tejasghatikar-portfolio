@@ -45,11 +45,13 @@ const publications = [
 		title: 'Dermoscopic Classification using Image Processing and CNN',
 		description:
 			'Automated melanoma detection model using SE-ResNeXt (a ResNet variant with squeeze-and-excitation blocks), achieving 90% accuracy on the ISIC 2020 Challenge Dataset.',
+		link: 'https://ijrt.org/j/article/view/333',
 	},
 	{
 		title: 'VPN Detection and Blocking',
 		description:
 			'Designed a VPN detector to reduce vulnerability of small-scale vendor websites to unethical activity by detecting VPN connections and blocking access. (Python, Django, IPQualityScore)',
+		link: 'https://ijrt.org/j/article/view/331',
 	},
 ];
 
@@ -130,6 +132,7 @@ const github = 'https://github.com/tejasghswe';
 				<article class="card">
 					<h3>{pub.title}</h3>
 					<p>{pub.description}</p>
+					<a href={pub.link} target="_blank" rel="noopener">Read paper ↗</a>
 				</article>
 			))}
 		</section>
